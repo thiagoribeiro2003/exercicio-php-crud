@@ -9,7 +9,10 @@ function inserirAlunos(PDO $conexao, string $nome, float $primeira, float $segun
         $consulta = $conexao->prepare($sql);
         $consulta->bindParam(':nome', $nome,  PDO::PARAM_STR);
         $consulta->bindParam(':primeira', $primeira, PDO::PARAM_STR);
-        $consulta->bindParam(':segunda',)
+        $consulta->bindParam(':segunda', $segunda, PDO::PARAM_STR);
+        $consulta->bindParam(':media', $media, PDO::PARAM_STR);
+        $consulta->bindParam(':situacao', $situacao, PDO::PARAM_STR);
+        $consulta->execute();
     } catch (Exception $erro) {
         die ("Erro: ". $erro->getMessage());
     }

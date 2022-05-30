@@ -1,3 +1,7 @@
+<?php 
+require_once "../etapa-3/funcoes-alunos.php";
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
