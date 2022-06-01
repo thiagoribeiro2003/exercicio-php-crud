@@ -1,3 +1,10 @@
+<?php 
+require_once "../etapa-2/funcoes-alunos.php";
+$Alunos = lerAlunos($conexao);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

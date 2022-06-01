@@ -27,7 +27,7 @@ try {
 } catch (Exception $erro){ 
     die("Erro: ".$erro->getMessage());
 }
-var_dump($conexao)
+
 
 
 

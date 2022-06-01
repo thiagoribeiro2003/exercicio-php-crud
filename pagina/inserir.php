@@ -1,5 +1,19 @@
 <?php 
-require_once "../etapa-3/funcoes-alunos.php";
+if(isset($_POST['inserir'])) {
+	require_once "../etapa-2/funcoes-alunos.php";
+	$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+	$primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$segunda = filter_input(INPUT_POST,'segunda', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+	$media = filter_input(INPUT_POST,'segunda')
+	
+	
+
+	inserirAlunos($conexao,$nome,$primeira,$segunda);
+
+	header("location:visualizar.php");
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +41,7 @@ require_once "../etapa-3/funcoes-alunos.php";
 	    <p><label for="segunda">Segunda nota:</label>
 	    <input type="number" name="segunda" id="segunda" step="0.1" min="0.0" max="10" required></p>
 	    
-      <button name="cadastrar">Cadastrar aluno</button>
+      <button type="submit" name="inserir">Cadastrar aluno</button>
 	</form>
 
     <hr>
