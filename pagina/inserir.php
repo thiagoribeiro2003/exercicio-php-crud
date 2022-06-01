@@ -4,11 +4,18 @@ if(isset($_POST['inserir'])) {
 	$nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
 	$primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 	$segunda = filter_input(INPUT_POST,'segunda', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-	$media = filter_input(INPUT_POST,'segunda')
+	$media = ($primeira + $segunda)/2;
+	
+	 if ($media >= 7){
+		$situacao = "aprovado";
+	} else {
+		$situacao = "reprovado";
+	}
+	
 	
 	
 
-	inserirAlunos($conexao,$nome,$primeira,$segunda);
+	inserirAlunos($conexao,$nome,$primeira,$segunda,$media,$situacao);
 
 	header("location:visualizar.php");
 
