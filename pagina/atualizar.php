@@ -1,4 +1,25 @@
+<?php 
+require_once "../etapa-2/funcoes-alunos.php";
+$alunos = lerUmAluno($conexao, $id);
 
+// Pegando o valor do id e sanitizando por segurança
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
+if(isset($_POST['atualizar-dados'])){
+    require_once "../etapa-2/funcoes-alunos.php";
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
+    $primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
+    $segunda = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
+    $media = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
+    $situacao = filter_input(INPUT_POST, 'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
+
+    atualizarAluno($conexao, $id, $nome, $primeira, $segunda, $media, $situacao);
+
+    header("location:visualizar.php");
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
