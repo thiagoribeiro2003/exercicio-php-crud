@@ -31,9 +31,9 @@ $listaDeAlunos = lerAlunos($conexao);
             <p><b>Primeira Nota:</b> <?=$alunos["primeira"]?></p>
             <p><b>Segunda Nota:</b> <?=$alunos["segunda"]?></p>
             <p><b>Média:</b> <?=$alunos["media"]?></p>
-            <p><b>Situação:</b> <?=$alunos["situacao"]?></p>
-            <a class="atualizar" href="atualizar.php?id=<?=$alunos['id']?>">Atualizar</a> 
-            <a class="excluir" href="excluir.php?id=<?=$alunos['id']?>">Excluir</a>
+            <p class="<?=$alunos["situacao"]?>"><b>Situação:</b> <?=$alunos["situacao"]?></p>
+            <a class="atualizar" style="color: green;" href="atualizar.php?id=<?=$alunos['id']?>">Atualizar</a> 
+            <a class="excluir"  style="color: red;" href="excluir.php?id=<?=$alunos['id']?>">Excluir</a>
             
 
             
@@ -52,6 +52,8 @@ as páginas de atualização e exclusão. -->
 
     <p><a href="index.php">Voltar ao início</a></p>
 </div>
+
+<script src="../js/confirm.js"></script>
 
 </body>
 </html>

@@ -14,6 +14,16 @@ a {
     font-size: 1rem;
 }
 
+.aprovado {
+    color: green;
+    font-weight: bold;
+}
+
+.reprovado {
+    color: red;
+    font-weight: bold;
+}
+
 
 h2 a { font-size: 0.9rem;}
 
