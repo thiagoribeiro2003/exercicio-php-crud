@@ -32,8 +32,9 @@ $listaDeAlunos = lerAlunos($conexao);
             <p><b>Segunda Nota:</b> <?=$alunos["segunda"]?></p>
             <p><b>Média:</b> <?=$alunos["media"]?></p>
             <p><b>Situação:</b> <?=$alunos["situacao"]?></p>
-            <a href="atualizar.php?id=<?=$alunos['id']?>">Atualizar</a> 
-            <a href="excluir.php?id=<?=$alunos['id']?>">Excluir</a>
+            <a class="atualizar" href="atualizar.php?id=<?=$alunos['id']?>">Atualizar</a> 
+            <a class="excluir" href="excluir.php?id=<?=$alunos['id']?>">Excluir</a>
+            
 
             
         <hr>   

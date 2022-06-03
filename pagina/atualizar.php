@@ -12,7 +12,7 @@ if(isset($_POST['atualizar-dados'])){
     
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
-    $segunda = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
+    $segunda = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     
     $media = ($primeira + $segunda)/2;
 	
@@ -22,7 +22,7 @@ if(isset($_POST['atualizar-dados'])){
 		$situacao = "reprovado";
 	}
 
-    $situacao = 
+    
 	
 
     atualizarAluno($conexao, $id, $nome, $primeira, $segunda, $media, $situacao);
@@ -70,7 +70,7 @@ if(isset($_POST['atualizar-dados'])){
         <!-- Campo somente leitura e desabilitado para edição 
         Usado apenas para exibição do texto da situação -->
             <label for="situacao">Situação:</label>
-	        <input name="<?=$alunos['situacao']?>" type="text" name="situacao" id="situacao" readonly disabled>
+	        <input value="<?=$alunos['situacao']?>" type="text" name="situacao" id="situacao" readonly disabled>
         </p>
 	    
         <button name="atualizar-dados">Atualizar dados do aluno</button>
