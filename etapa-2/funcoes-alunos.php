@@ -34,7 +34,7 @@ function lerAlunos(PDO $conexao):array {
 
 
 // Ler Um Aluno
-function lerUmAluno(PDO $conexao, int $id):array{
+function lerUmAluno(PDO $conexao, int $id){
     $sql = "SELECT id, nome, primeira, segunda, media, situacao FROM alunos WHERE id = :id";
 
     try {
@@ -48,7 +48,10 @@ function lerUmAluno(PDO $conexao, int $id):array{
     return $resultado;
 }
 
-function atualizarAluno(PDO $conexao, int $id, string $nome, float $primeira, float $segunda, float $media, string $situacao):void{
+
+
+
+function atualizarAluno(PDO $conexao, int $id, string $nome, float $primeira, float $segunda, float $media, string $situacao):void {
     $sql = "UPDATE alunos SET nome = :nome, primeira = :primeira, segunda = :segunda, media = :media, situacao = :situacao WHERE id = :id";
 
     try {
@@ -66,6 +69,18 @@ function atualizarAluno(PDO $conexao, int $id, string $nome, float $primeira, fl
     }
 }
 
+
+
+function excluirAluno (PDO $conexao, int $id):void{
+    $sql = "DELETE FROM alunos WHERE id = :id";
+    try {
+        $consulta = $conexao->prepare($sql);
+        $consulta->bindParam(':id', $id, PDO::PARAM_INT);
+        $consulta->execute();
+    } catch (Exception $erro) {
+        die("Erro: ".$erro->getMessage());
+    }
+}
 
 
 

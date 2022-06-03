@@ -1,17 +1,29 @@
 <?php 
 require_once "../etapa-2/funcoes-alunos.php";
+
+$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
 $alunos = lerUmAluno($conexao, $id);
 
 // Pegando o valor do id e sanitizando por segurança
-$id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
+
 
 if(isset($_POST['atualizar-dados'])){
-    require_once "../etapa-2/funcoes-alunos.php";
+    
     $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_SPECIAL_CHARS);
     $primeira = filter_input(INPUT_POST, 'primeira', FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
     $segunda = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
-    $media = filter_input(INPUT_POST, 'segunda', FILTER_SANITIZE_NUMBER_FLOAT);
-    $situacao = filter_input(INPUT_POST, 'situacao', FILTER_SANITIZE_SPECIAL_CHARS);
+    
+    $media = ($primeira + $segunda)/2;
+	
+	 if ($media >= 7){
+		$situacao = "aprovado";
+	} else {
+		$situacao = "reprovado";
+	}
+
+    $situacao = 
+	
 
     atualizarAluno($conexao, $id, $nome, $primeira, $segunda, $media, $situacao);
 
@@ -39,26 +51,26 @@ if(isset($_POST['atualizar-dados'])){
     <form action="#" method="post">
         
 	    <p><label for="nome">Nome:</label>
-	    <input type="text" name="nome" id="nome" required></p>
+	    <input value="<?=$alunos['nome']?>" type="text" name="nome" id="nome" required></p>
         
         <p><label for="primeira">Primeira nota:</label>
-	    <input name="primeira" type="number" id="primeira" step="0.1" min="0.0" max="10" required></p>
+	    <input value="<?=$alunos['primeira']?>" name="primeira" type="number" id="primeira" step="0.1" min="0.0" max="10" required></p>
 	    
 	    <p><label for="segunda">Segunda nota:</label>
-	    <input name="segunda" type="number" id="segunda" step="0.1" min="0.0" max="10" required></p>
+	    <input value=<?=$alunos['segunda']?> name="segunda" type="number" id="segunda" step="0.1" min="0.0" max="10" required></p>
 
         <p>
         <!-- Campo somente leitura e desabilitado para edição.
         Usado apenas para exibição do valor da média -->
             <label for="media">Média:</label>
-            <input name="media" type="number" id="media" step="0.1" min="0.0" max="10" readonly disabled>
+            <input value="<?=$alunos['media']?>" name="media" type="number" id="media" step="0.1" min="0.0" max="10" readonly disabled>
         </p>
 
         <p>
         <!-- Campo somente leitura e desabilitado para edição 
         Usado apenas para exibição do texto da situação -->
             <label for="situacao">Situação:</label>
-	        <input type="text" name="situacao" id="situacao" readonly disabled>
+	        <input name="<?=$alunos['situacao']?>" type="text" name="situacao" id="situacao" readonly disabled>
         </p>
 	    
         <button name="atualizar-dados">Atualizar dados do aluno</button>
