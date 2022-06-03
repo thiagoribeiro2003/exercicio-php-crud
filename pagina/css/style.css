@@ -14,18 +14,29 @@ a {
     font-size: 1rem;
 }
 
-.aprovado {
+.aprovado b{
     color: green;
     font-weight: bold;
 }
 
-.reprovado {
+.reprovado b {
     color: red;
     font-weight: bold;
+}
+
+.inserir p {
+    font-weight: bold;
+}
+
+.lista-alunos a {
+    display: flex;
+    
+    justify-content:flex-start;
 }
 
 
 h2 a { font-size: 0.9rem;}
 
 a:hover, a:focus { text-decoration: underline;}
+
 

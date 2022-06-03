@@ -38,6 +38,7 @@ if(isset($_POST['inserir'])) {
     		
     <p>Utilize o formulário abaixo para cadastrar um novo aluno.</p>
 
+<div class="inserir">
 	<form action="#" method="post">
 	    <p><label for="nome">Nome:</label>
 	    <input type="text" name="nome" id="nome" required></p>
@@ -50,6 +51,8 @@ if(isset($_POST['inserir'])) {
 	    
       <button type="submit" name="inserir">Cadastrar aluno</button>
 	</form>
+	</div>	
+
 
     <hr>
     <p><a href="index.php">Voltar ao início</a></p>
